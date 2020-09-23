@@ -62,7 +62,12 @@ func main() {
 			msg := tgbotapi.NewMessage(update.Message.Chat.ID, fmt.Sprintf("%s\n(c)%s", quote.Body, quote.Author))
 			bot.Send(msg)
 		case "go":
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Let`s go")
+			quote := new(Quote)
+			quote = randomQuoteRun()
+			msg := tgbotapi.NewMessage(update.Message.Chat.ID, fmt.Sprintf("%s\n(c)%s", quote.Body, quote.Author))
+			bot.Send(msg)
+		default:
+			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Send me Go or go for random quote")
 			bot.Send(msg)
 		}
 	}
